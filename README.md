@@ -7,7 +7,7 @@ This project contains:
 - GitHub Action to build/push Docker image
 - Terraform example for EKS
 
-## How to run locally
+## How to run locally.
 
 docker build -f docker/Dockerfile -t test-ip-echo .
 docker run -p 8080:8080 test-ip-echo
