@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ip-echo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ip-echo
+  template:
+    metadata:
+      labels:
+        app: ip-echo
+    spec:
+      containers:
+        - name: ip-echo
+          image: gbmkocc1/ip-echo:latest   # <- replace me later
+          ports:
+            - containerPort: 8080
