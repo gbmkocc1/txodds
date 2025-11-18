@@ -1,15 +1,11 @@
-# Simple IP Echo Flask App
+# Flask IP App – Technical Assignment
 
-This project contains:
-- Python Flask app
-- Dockerfile
-- Kubernetes manifests
-- GitHub Action to build/push Docker image
-- Terraform example for EKS
+This repo contains:
+- Python Flask app that shows the client's public IP
+- Dockerfile to containerize the app
+- GitHub Actions workflow to build & push image to Docker Hub
+- Kubernetes manifests to deploy the service
+- Terraform example to provision AWS EKS infrastructure
 
-## How to run locally
-
-docker build -f docker/Dockerfile -t test-ip-echo .
-docker run -p 8080:8080 test-ip-echo
-
-curl http://localhost:8080
+## Docker Hub Image
+Image: gbmkocc1/flask-ip-app:latest
