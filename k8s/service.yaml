@@ -1,11 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: ip-echo
+  name: flask-ip-service
 spec:
   type: LoadBalancer
   selector:
-    app: ip-echo
+    app: flask-ip-app
   ports:
-    - port: 80
-      targetPort: 8080
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
