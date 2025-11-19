@@ -1,25 +1,25 @@
-provider "aws" {
-  region = "eu-west-2"
-}
-
-module "eks" {
-  source  = "terraform-aws-modules/eks/aws"
-  version = "19.0.0"
-
-  cluster_name    = "flask-ip-cluster"
-  cluster_version = "1.30"
-
-  vpc_id     = "vpc-123456"      # Example value
-  subnet_ids = ["subnet-123", "subnet-456"]
-
-  manage_aws_auth = true
-
-  eks_managed_node_groups = {
-    default = {
-      min_size     = 1
-      max_size     = 3
-      desired_size = 1
-      instance_types = ["t3.medium"]
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
     }
   }
+}
+
+provider "aws" {
+  region = var.region
+}
+
+resource "aws_eks_cluster" "txodds" {
+  name     = "txodds-eks"
+  role_arn = var.cluster_role_arn
+
+  vpc_config {
+    subnet_ids = var.subnet_ids
+  }
+}
+
+output "cluster_name" {
+  value = aws_eks_cluster.txodds.name
 }
